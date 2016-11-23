@@ -1,6 +1,8 @@
 package main.com.jsfExample.Controller;
 
+import com.itextpdf.text.DocumentException;
 import main.com.jsfExample.DTOs.MyClient;
+import main.com.jsfExample.Service.PdfService;
 import main.com.jsfExample.Service.RestClientService;
 
 import javax.ejb.EJB;
@@ -31,17 +33,25 @@ public class TariffController extends HttpServlet implements Serializable{
     @Inject
     private RestClientService restClientService;
 
+    //@Inject
+    @EJB
+    private PdfService pdfService;
+
     @Override
     public void doGet( HttpServletRequest req,
                        HttpServletResponse resp )
             throws ServletException,
                    IOException {
 
-        System.out.println(
-                getClientListFromMap(
-                        restClientService.getClientMapList( req.getParameter( "tariffId" ))
-                ).toString()
-        );
+        String tariffId = req.getParameter( "tariffId" );
+
+        List<MyClient> clientList = getClientListFromMap( restClientService.getClientMapList( tariffId ));
+
+        try {
+            pdfService.makePdf( tariffId, clientList );
+        } catch ( DocumentException e) {
+            req.setAttribute( "error", "Sorry, DocumentException arose :(" );
+        }
 
         req.getRequestDispatcher( "/index.xhtml" ).forward( req, resp );
     }
@@ -52,7 +62,7 @@ public class TariffController extends HttpServlet implements Serializable{
             MyClient myClient = new MyClient();
             myClient.setFirstName( String.valueOf( hashMap.get( "firstName" )));
             myClient.setLastName( String.valueOf( hashMap.get( "lastName" )));
-            myClient.setBirthDay( String.valueOf( hashMap.get( "birthBay" )));
+            myClient.setBirthDay( String.valueOf( hashMap.get( "birthDay" )));
             clientList.add( myClient );
         }
         return clientList;

@@ -9,7 +9,7 @@
   <url>http://maven.apache.org</url>
   <dependencies>
 
-      <!-- JSF -->
+      <!-- JSF dep-cies -->
       <dependency>
           <groupId>com.sun.faces</groupId>
           <artifactId>jsf-api</artifactId>
@@ -22,14 +22,14 @@
           <version>2.2.10</version>
       </dependency>
 
-      <!-- JSTL -->
+      <!-- JSTL dep-cy -->
       <dependency>
           <groupId>javax.servlet</groupId>
           <artifactId>jstl</artifactId>
           <version>1.2</version>
       </dependency>
 
-      <!-- Rest MyClient -->
+      <!-- Rest Client dep-cies -->
       <dependency>
           <groupId>com.sun.jersey</groupId>
           <artifactId>jersey-server</artifactId>
@@ -71,6 +71,13 @@
           <groupId>javax.servlet</groupId>
           <artifactId>javax.servlet-api</artifactId>
           <version>3.0.1</version>
+      </dependency>
+
+      <!-- PDF dep-cy -->
+      <dependency>
+          <groupId>com.itextpdf</groupId>
+          <artifactId>itextpdf</artifactId>
+          <version>5.0.6</version>
       </dependency>
 
 

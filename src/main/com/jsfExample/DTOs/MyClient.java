@@ -28,10 +28,6 @@ public class MyClient {
 
     @Override
     public String toString() {
-        return "MyClient{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthDay='" + birthDay + '\'' +
-                '}';
+        return  firstName + " " + lastName + " " + birthDay + "\n";
     }
 }
