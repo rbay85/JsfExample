@@ -1,6 +1,7 @@
 package main.com.jsfExample.Service;
 
 import com.sun.jersey.api.client.Client;
+import main.com.jsfExample.DTOs.MyClient;
 import main.com.jsfExample.DTOs.Tariff;
 
 import javax.ws.rs.core.MediaType;
@@ -18,7 +19,6 @@ public class RestClientService implements Serializable{
     private static final long serialVersionUID = 7L;
 
     List<Tariff> tariffList = getTariffListFromMap( getTariffMapList());
-
 
     private List<Tariff> getTariffListFromMap ( List<HashMap> tariffMapList ){
         List<Tariff> tariffList = new ArrayList<Tariff>();

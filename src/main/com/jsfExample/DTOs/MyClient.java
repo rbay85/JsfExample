@@ -1,7 +1,7 @@
 package main.com.jsfExample.DTOs;
 
 
-public class Client {
+public class MyClient {
 
     private String firstName;
     private String lastName;
@@ -28,7 +28,7 @@ public class Client {
 
     @Override
     public String toString() {
-        return "Client{" +
+        return "MyClient{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthDay='" + birthDay + '\'' +

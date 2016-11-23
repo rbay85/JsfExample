@@ -1,5 +1,6 @@
 package main.com.jsfExample.Controller;
 
+import main.com.jsfExample.DTOs.MyClient;
 import main.com.jsfExample.Service.RestClientService;
 
 import javax.ejb.EJB;
@@ -14,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 //@Named( "Controller" )
@@ -33,8 +37,24 @@ public class TariffController extends HttpServlet implements Serializable{
             throws ServletException,
                    IOException {
 
-        System.out.println( restClientService.getClientMapList( req.getParameter( "tariffId" ) ).toString() );
+        System.out.println(
+                getClientListFromMap(
+                        restClientService.getClientMapList( req.getParameter( "tariffId" ))
+                ).toString()
+        );
 
         req.getRequestDispatcher( "/index.xhtml" ).forward( req, resp );
+    }
+
+    private List<MyClient> getClientListFromMap ( List<HashMap> clientMapList ){
+        List<MyClient> clientList = new ArrayList<MyClient>();
+        for ( HashMap hashMap : clientMapList ){
+            MyClient myClient = new MyClient();
+            myClient.setFirstName( String.valueOf( hashMap.get( "firstName" )));
+            myClient.setLastName( String.valueOf( hashMap.get( "lastName" )));
+            myClient.setBirthDay( String.valueOf( hashMap.get( "birthBay" )));
+            clientList.add( myClient );
+        }
+        return clientList;
     }
 }
