@@ -23,11 +23,15 @@ public class TariffController extends HttpServlet implements Serializable{
 
     private static final long serialVersionUID = 6L;
 
-    @EJB
+    //@EJB
+    @Inject
     private RestClientService restClientService;
 
     @Override
-    public void doGet( HttpServletRequest req, HttpServletResponse resp ) throws ServletException, IOException {
+    public void doGet( HttpServletRequest req,
+                       HttpServletResponse resp )
+            throws ServletException,
+                   IOException {
 
         System.out.println( restClientService.getClientMapList( req.getParameter( "tariffId" ) ).toString() );
 
