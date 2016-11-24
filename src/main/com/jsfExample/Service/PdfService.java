@@ -24,7 +24,7 @@ public class PdfService implements Serializable{
                          List<MyClient> clientList )
             throws DocumentException, IOException {
 
-        String fileName = "C:\\report"+tariffId+".pdf";
+        String fileName = "C:\\report" + tariffId + ".pdf";
 
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
 
