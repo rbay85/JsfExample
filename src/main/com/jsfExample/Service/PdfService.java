@@ -24,21 +24,17 @@ public class PdfService implements Serializable{
                          List<MyClient> clientList )
             throws DocumentException, IOException {
 
+        // выюираем куда положить и как назвать
         String fileName = "C:\\report" + tariffId + ".pdf";
-
+        // готовим документ
         Document document = new Document(PageSize.A4, 50, 50, 50, 50);
-
         PdfWriter.getInstance( document, new FileOutputStream( fileName ));
-
         document.open();
-        System.out.println();
-
+        // записываем и закрываем
         for ( MyClient myClient : clientList ){
 
             document.add( new Paragraph( myClient.toString() ));
-            System.out.print( myClient.toString() );
         }
-
         document.close();
     }
 }

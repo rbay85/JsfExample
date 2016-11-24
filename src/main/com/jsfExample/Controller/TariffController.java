@@ -22,8 +22,6 @@ import java.util.HashMap;
 import java.util.List;
 
 
-//@Named( "Controller" )
-//@SessionScoped
 @WebServlet( "/printClientList" )
 public class TariffController extends HttpServlet implements Serializable{
 
@@ -52,7 +50,6 @@ public class TariffController extends HttpServlet implements Serializable{
         } catch ( DocumentException e) {
             req.setAttribute( "error", "Sorry, DocumentException arose :(" );
         }
-
         req.getRequestDispatcher( "/index.xhtml" ).forward( req, resp );
     }
 
